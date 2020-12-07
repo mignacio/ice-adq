@@ -9,25 +9,24 @@
 /*=====[Inclusions of function dependencies]=================================*/
 
 #include "sapi.h"
-/*=====[Definition macros of private constants]==============================*/
-
-/*=====[Definitions of extern global variables]==============================*/
-
-/*=====[Definitions of public global variables]==============================*/
-
-/*=====[Definitions of private global variables]=============================*/
-
-/*=====[Main function, program entry point after power on or reset]==========*/
-
+#include "sensores.h"
+#include "buffer_sensores.h"
+#include "comunicacion.h"
 
 int main(void)
 {
    // ----- Setup -----------------------------------
+	sensores_init();
+	comm_init();
+	buffer_init();
+	schedulerInit();
 
+	uint32_t contador = 0;
    // ----- Repeat for ever -------------------------
    while(true)
    {
-
+	   delay(1);
+	   contador++;
    }
    // YOU NEVER REACH HERE, because this program runs directly or on a
    // microcontroller and is not called by any Operating System, as in the 

@@ -22,6 +22,8 @@ typedef struct sensor_t
 }sensor_t;
 
 const sensor_t *sensores[4];
-const uint8_t size_sensores = (uint8_t)(sizeof(sensores) / sizeof(sensor_t)) - 1;
+const uint8_t size_sensores;
+
+void sensores_init();
 
 #endif /* PRE_CESE_ICE_ADQ_INC_SENSORES_H_ */
