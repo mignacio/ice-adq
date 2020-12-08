@@ -10,11 +10,13 @@
 
 #include "sapi.h"
 
+#define CANT_SENSORES 4
+
 typedef struct sensor_t
 {
 	bool flag_listo;
-	uint16_t tiempo_muestreo; //en milisegundos
-	uint16_t tiempo_offset; //en milisegundos
+	uint16_t tiempo_muestreo; //en decenas de milisegundos
+	uint16_t tiempo_offset; //en decenas de milisegundos
 	uint16_t valor_crudo;
 	double valor;
 	void (* convertir)();

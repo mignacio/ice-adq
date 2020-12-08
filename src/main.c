@@ -16,17 +16,28 @@
 int main(void)
 {
    // ----- Setup -----------------------------------
+	boardInit();
+
+	delay_t sys_clock;
+	delayInit(&sys_clock, 10);
 	sensores_init();
 	comm_init();
 	buffer_init();
-	schedulerInit();
 
-	uint32_t contador = 0;
+	uartWriteString(UART_USB, "init listo\r\n");
    // ----- Repeat for ever -------------------------
-   while(true)
+
+   while(TRUE)
    {
-	   delay(1);
-	   contador++;
+	   if(delayRead(&sys_clock))
+	   {
+		   comm_enviar_string(buffer_leer_string());
+
+		   for(int indx = 0; indx < CANT_SENSORES; indx++)
+		   {
+			   sensores[indx]->convertir();
+		   }
+	   }
    }
    // YOU NEVER REACH HERE, because this program runs directly or on a
    // microcontroller and is not called by any Operating System, as in the 

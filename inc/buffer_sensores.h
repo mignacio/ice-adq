@@ -8,7 +8,7 @@
 #ifndef PRE_CESE_ICE_ADQ_INC_BUFFER_SENSORES_H_
 #define PRE_CESE_ICE_ADQ_INC_BUFFER_SENSORES_H_
 
-#define SIZE_BUFFER 20
+#define SIZE_BUFFER 30
 #define LONG_CADENA 128
 
 char * buffer_escribir_string();

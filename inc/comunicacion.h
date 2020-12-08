@@ -8,7 +8,7 @@
 #ifndef PRE_CESE_ICE_ADQ_INC_COMUNICACION_H_
 #define PRE_CESE_ICE_ADQ_INC_COMUNICACION_H_
 
-int comm_enviar_string();
+int comm_enviar_string(char* cadena);
 
 void comm_init();
 

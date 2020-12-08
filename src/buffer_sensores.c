@@ -11,30 +11,47 @@ char buffer[SIZE_BUFFER][LONG_CADENA] = {0};
 
 void buffer_init();
 
-int puntero_buf;
+int puntero_lect;
+int puntero_escr;
+
 void buffer_init()
 {
-	puntero_buf = 0;
+	puntero_lect = 0;
+	puntero_escr = 0;
 }
 
 char * buffer_escribir_string()
 {
-	if(SIZE_BUFFER == puntero_buf)
+
+	char * buf = &buffer[puntero_escr][0];
+
+	if(puntero_escr >= SIZE_BUFFER)
 	{
-		return 0; //Error buffer lleno.
+		puntero_escr = 0;
 	}
-	char * buf = buffer[puntero_buf];
-	puntero_buf++;
+	else
+	{
+		puntero_escr++;
+	}
 	return buf;
 }
 
 char * buffer_leer_string()
 {
-	if(0 == puntero_buf)
+	if(puntero_lect == puntero_escr)
 	{
-		return 0; //buffer vacío.
+		return 0; //buffer vacio
 	}
-	char * buf = buffer[puntero_buf];
-	puntero_buf--;
+
+	char * buf = &buffer[puntero_lect][0];
+
+	if(puntero_lect >= SIZE_BUFFER)
+	{
+		puntero_lect = 0;
+	}
+	else
+	{
+		puntero_lect++;
+	}
 	return buf;
 }
